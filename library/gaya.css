@@ -1,0 +1,264 @@
+/* local font */
+@font-face {
+    font-family: Comfortaa;
+    src: url('font/Comfortaa-Light.ttf');
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url('font/Montserrat-SemiBold.ttf');
+}
+
+/* web */
+* {
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Comfortaa', sans-serif;
+    height: 100%;
+    background-color: aqua;
+}
+
+.container {
+    display: flex;
+}
+
+.merah {
+    background-color: #EF476F;
+}
+
+.hijau {
+    background-color: #06D6A0;
+}
+
+#atas {
+    background-color: #073B4C;
+    height: 11%;
+}
+
+#isi {
+    height: 90%;
+}
+
+nav {
+    color: white;
+    margin-top: 1%;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+    padding: 100% 10px;
+}
+
+nav li:nth-child(odd):hover {
+    background-color: rgb(183, 198, 228);
+}
+
+
+/* Form di bagian kiri */
+#main {
+    width: 25%;
+    padding: 10px;
+    height: 100%;
+    background-color: #118AB2;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    margin: 17px 15px;
+    width: 70%;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Menu di bagian kiri */
+.menu {
+    padding: 0;
+}
+
+.menu li {
+    border-bottom: 1px dotted #444;
+}
+
+.menu a {
+    display: block;
+    padding: 20px;
+    list-style: none;
+    color: white;
+    text-decoration: none;
+}
+
+/* Tabel di bagian kanan */
+
+#render-list {
+    width: 75%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th,
+td {
+    border: 1px solid rgb(165, 163, 163);
+    padding: 10px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: rgb(184, 202, 202);
+}
+
+input[value=Batal] {
+    display: none;
+}
+
+.col_aksi:hover input[value=Batal] {
+    display: block;
+    background-color: red;
+    margin-top: 10px;
+    color: white;
+}
+/* elemen sampingan */
+#tombol-atas {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgb(17 221 80 / 70%);
+    border-radius: 60px;
+    padding: 20px;
+    text-decoration: none;
+    box-shadow: 1px 3px 3px grey;
+}
+
+#tombol-atas:hover {
+    background-color: rgb(17 221 80);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 5px;
+    bottom: 3px;
+    font-size: small;
+    color: white;
+}
+
+/* animated form */
+.form-input {
+    position: relative;
+    width: 100%;
+}
+
+.form-input label {
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    color: #cecece;
+    transition: all 0.5s ease;
+    pointer-events: none;
+    width: 100%;
+    font-size: 15px;
+}
+
+input:focus~label,
+input:valid~label,
+select:focus~label,
+select:valid~label{
+    display: block;
+    color: black;
+    top: -20px;
+    font-size: 18px;
+}
+
+input,
+select,
+button[type=submit] {
+    height: 40px;
+    border-radius: 30px;
+    outline: none;
+    width: 100%;
+}
+
+button[type=submit] {
+    background-color:  White;
+    color: rgb(99, 193, 243);
+    font-size: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    border: 2px solid rgb(99, 193, 243);
+    font-weight: bold;
+}
+
+button[type=submit]:hover {
+    background-color: rgb(99, 193, 243);
+    color: white;
+}
+
+p {
+    margin: 40px auto;
+}
+
+/* login */
+#login {
+    position: absolute;
+    top: 200px;
+    left: 40%;
+    background-color: #118AB2;
+    width: 300px;
+    border-radius: 19px;
+    box-shadow: 0 7px 7px grey;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+#login h3 {
+    background-color: #073B4C;
+    color: white;
+    border-bottom: 3px solid white;
+    padding: 15px 19px;
+    text-align: center;
+    border-radius: 19px 19px 0 0;
+    margin: 0;
+}
+
+#login .form-input,
+#login button[type=submit] {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#login button[type=submit] {
+    margin-left: 45px;
+    margin-bottom: 1px;
+}
+
+#login:hover {
+    top: 193px;
+}

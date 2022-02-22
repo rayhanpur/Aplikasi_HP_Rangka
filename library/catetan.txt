@@ -1,0 +1,25 @@
+query peminjaman:
+if ($_POST) {
+        $date = new DateTime();
+        $formatted_date = $date->format('Y-m-d H:i:s');
+        $current_date = strtotime($formatted_date);
+        
+        $batas = $current_date + (60*15);
+        $formatted_batas = date("Y-m-d H:i:s", $batas);
+    
+        $insert_data = mysqli_query($koneksi, "INSERT INTO `data_peminjaman_hp` (`id`, `nama_santri`, `kelas_santri`, `jam_peminjaman`, `batas_peminjaman`, `jam_pengembalian`, `status_peminjaman`) VALUES (NULL, '$_POST[nama_santri]', '$_POST[kelas_santri]', '$formatted_date', '$formatted_batas', NULL, 'SEDANG MEMINJAM')");
+    }
+
+query jam_pengembalian:
+if ($_POST) {
+        $selesai = new DateTime();
+        $formatted_selesai = $selesai->format('Y-m-d H:i:s');
+    
+        if ($_POST['batas_waktu'] < $formatted_selesai) {
+            $status_peminjaman = "TERLAMBAT";
+        } else {
+            $status_peminjaman = "TEPAT WAKTU";
+        }
+    
+        $update_data = mysqli_query($koneksi, "UPDATE `data_peminjaman_hp` SET `jam_pengembalian` = '$formatted_selesai', `status_peminjaman` = '$status_peminjaman' WHERE `data_peminjaman_hp`.`id` = '$_POST[id_santri]'");
+    }
