@@ -62,10 +62,11 @@ nav a {
 nav li {
     display: inline;
     list-style-type: none;
-    padding: 100% 10px;
+    padding: 0px;
+    color: #979393;
 }
 
-nav li:nth-child(odd):hover {
+nav li:hover {
     background-color: rgb(183, 198, 228);
 }
 

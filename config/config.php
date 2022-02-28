@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "komputertrett";
-$db = "aplikasi_pinjam_hp";
+$pass = "";
+$db = "pinjam_hp_rangka";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 

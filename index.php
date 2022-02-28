@@ -12,7 +12,7 @@ if ($_POST) {
             $batas = $current_date + (60*15);
             $formatted_batas = date("Y-m-d H:i:s", $batas);
         
-            $insert_data = mysqli_query($koneksi, "INSERT INTO `data_peminjaman_hp` (`id`, `nama_santri`, `kelas_santri`, `hp_dipakai`, `jam_peminjaman`, `batas_peminjaman`, `jam_pengembalian`, `status_peminjaman`) VALUES (NULL, '$_POST[nama_santri]', '$_POST[kelas_santri]', '$_POST[hp_dipakai]', '$formatted_date', '$formatted_batas', NULL, 'Sedang Meminjam')");
+            $insert_data = mysqli_query($koneksi, "INSERT INTO `data_peminjaman_hp` (`id`, `nama_santri`, `kelas_santri`, `hp_dipakai`, `jam_peminjaman`, `batas_peminjaman`, `waktu_pengembalian`, `status_peminjaman`) VALUES (NULL, '$_POST[nama_santri]', '$_POST[kelas_santri]', '$_POST[hp_dipakai]', '$formatted_date', '$formatted_batas', NULL, 'Sedang Meminjam')");
         }
     } else {
         if ($_POST) {
@@ -25,9 +25,9 @@ if ($_POST) {
                     $status_peminjaman = "TEPAT WAKTU";
                 }
             
-                $update_data = mysqli_query($koneksi, "UPDATE `data_peminjaman_hp` SET `jam_pengembalian` = '$formatted_selesai', `status_peminjaman` = '$status_peminjaman' WHERE `data_peminjaman_hp`.`id` = '$_POST[id_santri]'");
+                $update_data = mysqli_query($koneksi, "UPDATE `data_peminjaman_hp` SET `waktu_pengembalian` = '$formatted_selesai', `status_peminjaman` = '$status_peminjaman' WHERE `data_peminjaman_hp`.`id` = '$_POST[id_santri]'");
             } else {
-                $update_data = mysqli_query($koneksi, "UPDATE `data_peminjaman_hp` SET `jam_pengembalian` = '$formatted_selesai', `status_peminjaman` = 'Batal Telpon' WHERE `data_peminjaman_hp`.`id` = '$_POST[id_santri]'");
+                $update_data = mysqli_query($koneksi, "UPDATE `data_peminjaman_hp` SET `waktu_pengembalian` = '$formatted_selesai', `status_peminjaman` = 'Batal Telpon' WHERE `data_peminjaman_hp`.`id` = '$_POST[id_santri]'");
             }
         }
     }
@@ -42,7 +42,7 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Peminjaman HP</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="library/gaya.css?v=<?= time(); ?>" rel="stylesheet" type="text/css">
+    <link href="library/gaya.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="library/img/hp.png">
 </head>
 
@@ -51,8 +51,6 @@ if ($_POST) {
         <h1>Aplikasi Peminjaman HP</h1>
         <nav>
             <ul>
-                <li>Admin</li>
-                <li>|</li>
                 <li><a href="ekspor.php" rel="noopener noreferrer">Download Data</a></li>
             </ul>
         </nav>
@@ -76,7 +74,7 @@ if ($_POST) {
                 </p>
                 <p>
                     <div class="form-input">
-                        <input type="text" name="kelas_santri" id="kelas_santri" pattern=".{2,}" required>
+                        <input type="text" name="kelas_santri" id="kelas_santri" required>
                         <label for="kelas_santri">Kelas</label>
                     </div>
                 </p>
@@ -84,12 +82,9 @@ if ($_POST) {
                     <div class="form-input">
                         <select name="hp_dipakai" id="hp_dipakai" required>
                             <option value="" disabled hidden selected></option>
-                            <option value="Advan 1">Advan 1</option>
-                            <option value="Advan 2">Advan 2</option>
-                            <option value="Advan 3">Advan 3</option>
-                            <option value="Xiaomi">Xiaomi</option>
-                            <option value="Lenovo Vibe">Lenovo Vibe</option>
-                            <option value="Redmi 5">Redmi 5</option>
+                            <option value="HP 1">HP 1</option>
+                            <option value="HP 2">HP 2</option>
+                            <option value="HP 3">HP 3</option>
                         </select>
                         <label for="hp_dipakai">Handphone</label>
                     </div>
@@ -123,10 +118,10 @@ if ($_POST) {
                 $waktu_batas = new DateTime($data['batas_peminjaman']);
                 $jam_batas = $waktu_batas->format("H:i");
 
-                if (empty($data['jam_pengembalian'])) {
+                if (empty($data['waktu_pengembalian'])) {
                     $jam_kembali = "";
                 } else {
-                    $waktu_kembali = new DateTime($data['jam_pengembalian']);
+                    $waktu_kembali = new DateTime($data['waktu_pengembalian']);
                     $jam_kembali = $waktu_kembali->format("H:i");
                 }
             ?>
