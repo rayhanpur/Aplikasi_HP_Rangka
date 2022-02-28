@@ -70,7 +70,7 @@ date_default_timezone_set("Asia/Jakarta");
         ?>
     </table>
     <?php
-        mysqli_query($koneksi, "TRUNCATE `aplikasi_pinjam_hp`.`data_peminjaman_hp`");
+        mysqli_query($koneksi, "TRUNCATE `pinjam_hp_rangka`.`data_peminjaman_hp`");
     ?>
 </body>
 </html>
