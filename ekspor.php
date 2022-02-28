@@ -45,10 +45,10 @@ date_default_timezone_set("Asia/Jakarta");
                 $waktu_batas = new DateTime($data['batas_peminjaman']);
                 $jam_batas = $waktu_batas->format("H:i:s");
 
-                if (empty($data['jam_pengembalian'])) {
+                if (empty($data['waktu_pengembalian'])) {
                     $jam_kembali = "";
                 } else {
-                    $waktu_kembali = new DateTime($data['jam_pengembalian']);
+                    $waktu_kembali = new DateTime($data['waktu_pengembalian']);
                     $jam_kembali = $waktu_kembali->format("H:i:s");
                 }
         ?>
